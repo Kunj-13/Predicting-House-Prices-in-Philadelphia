@@ -7,14 +7,14 @@ In the initial stages of my machine learning project aimed at predicting house p
 
 # Data Preprocessing
 ## Before Preprocessing 
-Before preprocessing, the dataset comprised a raw amalgam of house details from various sources. It included critical information such as location, size, age, number of bedrooms, and more, vital for predicting house prices. However, this raw form posed significant challenges: numerous missing values across different fields disrupted the continuity of data, outliers distorted the true distribution of house prices, and categorical variables were in text form, necessitating conversion to a numerical format for machine learning algorithms. The dataset's state made it unsuitable for direct application in predictive modeling, necessitating comprehensive preprocessing to address these issues.
+Before preprocessing, the dataset comprised a raw combination of house details from various sources. It included critical information such as location, size, age, number of bedrooms, and more, vital for predicting house prices. However, this raw form posed significant challenges: numerous missing values across different fields disrupted the continuity of data, outliers distorted the true distribution of house prices, and categorical variables were in text form, necessitating conversion to a numerical format for machine learning algorithms. The dataset's state made it unsuitable for direct application in predictive modeling, necessitating comprehensive preprocessing to address these issues.
 
 ![image](https://github.com/Kunj-13/Predicting-House-Prices-in-Philadelphia/assets/143433713/a1fa7d28-a9e0-43f1-808a-ef1c3b1007df)
 
 ## After Preprocessing
 
 ### Missing Value Imputation
-The preprocessing began with addressing missing values in significant columns like 'central_air' and 'basements'. The 'central_air' column, which indicates the presence of central air conditioning, had missing values filled with 'N', assuming the absence of this feature where not explicitly mentioned. Similarly, the 'basements' column, which describes the type of basement a property has, saw its missing values replaced with 'None', indicating properties without basements. This approach ensures that the model accounts for properties lacking these features instead of discarding or misinterpreting their data due to missing values.
+The preprocessing began with addressing missing values in significant columns like 'central_air' and 'basements'. The 'central_air' column, which indicates the presence of central air conditioning, had missing values filled with 'N'. Similarly, the 'basements' column, which describes the type of basement a property has, saw its missing values replaced with 'None', indicating properties without basements. This approach ensures that the model accounts for properties lacking these features instead of discarding or misinterpreting their data due to missing values.
 
 ![image](https://github.com/Kunj-13/Predicting-House-Prices-in-Philadelphia/assets/143433713/0d615dfc-d8a8-4ace-b66f-ebdb1370b2e5)
 
@@ -24,12 +24,12 @@ For model training, a subset of features was selected based on their presumed re
 ![image](https://github.com/Kunj-13/Predicting-House-Prices-in-Philadelphia/assets/143433713/b075b174-ea56-4ccd-a4a0-a99533078626)
 
 ### Dataset Splitting & Dropping Unnecessary Columns
-The dataset was then split into training and testing sets, with 20% of the data reserved for testing. This split is crucial for evaluating the model's performance on unseen data, ensuring that the assessments of its predictive accuracy are realistic and reliable. Also, The 'unit' column was dropped from the dataset. This step likely reflects a decision to exclude features that either provide little predictive value or could introduce unnecessary complexity into the model.
+The dataset was then split into training and testing sets, with 20% of the data reserved for testing. This split is crucial for evaluating the model's performance on unseen data, ensuring that the assessments of its predictive accuracy are realistic and reliable. Also, The 'unit' column was dropped from the dataset. This step was necessary as it was filled with null values, provided little predictive value and could have introduced unnecessary complexity into the model.
 
 ![image](https://github.com/Kunj-13/Predicting-House-Prices-in-Philadelphia/assets/143433713/fd9deffc-37c2-407f-bd31-d7a62157d434)
 
 ### Outlier Removal
-Outlier detection and removal were performed on numeric columns using the Interquartile Range (IQR) method. This method identifies outliers as those values lying outside 1.5 times the IQR from the first and third quartiles. Rows containing these outliers were removed from the dataset, resulting in a cleaner dataset ('df_clean') that's less likely to be skewed by extreme values. The comparison between the original and cleaned DataFrame shapes illustrates the extent of outlier removal, highlighting a commitment to enhancing data quality.
+Outlier detection and removal were performed on numeric columns using the Interquartile Range (IQR) method. This method identified outliers as those values lying outside 1.5 times the IQR from the first and third quartiles. Rows containing these outliers were removed from the dataset, resulting in a cleaner dataset ('df_clean') that's less likely to be skewed by extreme values. The comparison between the original and cleaned DataFrame shapes illustrates the extent of outlier removal, highlighting a commitment to enhancing data quality.
 
 ![image](https://github.com/Kunj-13/Predicting-House-Prices-in-Philadelphia/assets/143433713/d42a5817-be76-4ea8-8c94-9529483fb22a) 
 
@@ -50,7 +50,7 @@ After generating these polynomial features, I created a new DataFrame, poly_df, 
 ![image](https://github.com/Kunj-13/Predicting-House-Prices-in-Philadelphia/assets/143433713/eef9235f-b98f-4221-a7b0-1d53d26c56de)
 
 ## Addition of House Age Feature
-Recognizing the potential impact of a property's age on its market value, I introduced another critical feature: 'house_age'. I calculated this feature by subtracting the 'year_built' of each house from the current year (2023), providing me with the age of the house in years. This new feature aimed to capture the depreciation or appreciation effects associated with the age of properties, under the assumption that newer homes might fetch higher prices due to less wear and tear, more modern designs, and up-to-date amenities. Conversely, older homes might have historical value or may require more maintenance, factors that could also significantly influence their selling prices.
+Recognizing the potential impact of a property's age on its market value, I introduced another critical feature: 'house_age'. I calculated this feature by subtracting the 'year_built' of each house from the last year which was 2023, providing me with the age of the house in years. This new feature aimed to capture the depreciation or appreciation effects associated with the age of properties, under the assumption that newer homes might fetch higher prices due to less wear and tear, more modern designs, and up-to-date amenities. Conversely, older homes might have historical value or may require more maintenance, factors that could also significantly influence their selling prices.
 
 ![image](https://github.com/Kunj-13/Predicting-House-Prices-in-Philadelphia/assets/143433713/97773249-11e6-4f04-9bde-32b496bd552d)
 
